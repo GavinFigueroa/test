@@ -8,7 +8,7 @@ resources:
 - name: github-webhook
   type: github-webhook-resource
   source:
-    github_api: https://api.github.com/
+    github_api: https://api.github.com
     github_token: ((github-token))
 
 jobs: 
