@@ -1,0 +1,37 @@
+resources:
+- name: test-repo
+  type: git
+  source:
+    uri: git@github.com:GavinFigueroa/test.git
+    branch: test-pipeline
+    private_key: {{github-private-key}}
+- name: github-webhook
+  type: github-webhook-resource
+  source:
+    github_api: https://api.github.com/
+    github_token: ((github-token))
+
+jobs: 
+- name: pull-master
+  plan:
+  - get: test-repo
+    trigger: true
+  - task: run
+    file: test-repo/run.yml
+  - put: create-webhook
+    resource: github-webhook
+    params:
+      org: GavinFigueroa
+      repo: test
+      resource_name: test-repo
+      webhook_token: test-token
+      operation: create
+
+resource_types:
+- name: github-webhook-resource
+  type: docker-image
+  source:
+    repository: homedepottech/github-webhook-resource
+    tag: 'latest'
+
+    

@@ -1,0 +1,5 @@
+keys/
+.history/
+
+credentials.yml
+.DS_Store
