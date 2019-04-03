@@ -3,7 +3,7 @@ resource_types:
   type: docker-image
   source:
     repository: teliaoss/github-pr-resource
-    tag: v0.6.1
+    tag: latest
 
 resources:
 - name: pull-request
@@ -12,7 +12,7 @@ resources:
   webhook_token: test-token
   source:
     repository: GavinFigueroa/test
-    access_token: 7b53c2fc4008027a668ceb00e2ad2fd91dda4cf6
+    access_token: 84d3df994b394062bd47d05993fd856c310a40be
     v3_endpoint: https://api.github.com
     v4_endpoint: https://api.github.com/graphql
 
